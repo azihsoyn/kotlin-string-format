@@ -1,10 +1,12 @@
 import org.gradle.api.plugins.ExtensionAware
+import com.novoda.gradle.release.PublishExtension
+import org.gradle.script.lang.kotlin.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.junit.platform.gradle.plugin.FiltersExtension
 import org.junit.platform.gradle.plugin.EnginesExtension
 import org.junit.platform.gradle.plugin.JUnitPlatformExtension
 
-group = "com.github.azihsoyn"
+group = "com.github.azihsoyn.ktformat"
 version = "0.1.0"
 
 buildscript {
@@ -13,11 +15,13 @@ buildscript {
 
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
         classpath(kotlinModule("gradle-plugin", kotlin_version))
         classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.0")
+        classpath("com.novoda:bintray-release:0.8.0")
     }
 
 }
@@ -25,6 +29,7 @@ buildscript {
 apply {
     plugin("kotlin")
     plugin("org.junit.platform.gradle.plugin")
+    plugin("com.novoda.bintray-release")
 }
 
 configure<JUnitPlatformExtension> {
@@ -33,6 +38,16 @@ configure<JUnitPlatformExtension> {
             include("spek")
         }
     }
+}
+
+configure<PublishExtension> {
+    groupId = "com.github.azihsoyn.ktformat"
+    artifactId = "ktformat"
+    desc = "kotlin named string format"
+    setLicences("MIT")
+    publishVersion = "0.1.0"
+    uploadName = "ktformat"
+    website = "https://github.com/azihsoyn/ktformat"
 }
 
 val kotlin_version: String by extra
