@@ -1,4 +1,4 @@
-# kotlin-string-format
+# ktformat
 kotlin named string format
 
 # TL;DR
