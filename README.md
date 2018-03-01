@@ -1,6 +1,19 @@
 # ktformat
 kotlin named string format
 
+# Installation
+## Gradle
+
+```
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.github.azihsoyn.ktformat:ktformat:<latest-version>'
+}
+```
+
 # TL;DR
 
 ```kotlin
