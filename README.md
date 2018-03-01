@@ -17,6 +17,8 @@ dependencies {
 # TL;DR
 
 ```kotlin
+import com.github.azihsoyn.ktformat.format
+
 "Hello, {firstname} {lastname}".format(mapOf("firstname" to "named format", "lastname" to "in kotlin"))
 // Hello, named format in kotlin
 ```
